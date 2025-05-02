@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelMate - Personalized Travel Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #009ffd, #2a2a72);
+      color: white;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffdf00;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    .filters {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #e0f7fa;
+    }
+
+    .filters h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      background: #00bcd4;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filter-btn:hover {
+      background: #008c9e;
+    }
+
+    .trips {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .trip-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0.5rem;
+      padding: 0.5rem;
+      width: 300px;
+      text-align: center;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .trip-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .trip-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .trip-card p {
+      font-size: 1.2rem;
+    }
+
+    .testimonial {
+      background: #fff3e0;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      max-width: 600px;
+      border-left: 6px solid #ff9800;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: #2a2a72;
+      color: white;
+      text-align: center;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TravelMate</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stays.html">Stays</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Discover Your Perfect Destination</h2>
+      <p>Tailored experiences for every kind of traveler</p>
+    </div>
+  </section>
+
+  <!-- Traveler Type Filter -->
+  <section class="filters">
+    <h2>Choose Your Traveler Type</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn" onclick="filterTrips('solo')">Solo</button>
+      <button class="filter-btn" onclick="filterTrips('group')">Group</button>
+      <button class="filter-btn" onclick="filterTrips('student')">Student</button>
+      <button class="filter-btn" onclick="filterTrips('adventure')">Adventurer</button>
+      <button class="filter-btn" onclick="filterTrips('family')">Family</button>
+      <button class="filter-btn" onclick="filterTrips('couple')">Couple</button>
+      <button class="filter-btn" onclick="filterTrips('budget')">Budget</button>
+      <button class="filter-btn" onclick="filterTrips('luxury')">Luxury</button>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="trip-results" class="trips">
+    <!-- Solo Trips -->
+    <div class="trip-card solo" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1562605879-79a9c6bc02c8" alt="Solo Trip Image" />
+      <h3>Rishikesh</h3>
+      <p>Price: ₹8000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: eco, adventure</p>
+      <a href="info.html?destination=Rishikesh"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card solo" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1562605879-79a9c6bc02c8" alt="Solo Trip Image" />
+      <h3>Goa</h3>
+      <p>Price: ₹10000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: beach, relax</p>
+      <a href="info.html?destination=Goa"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card solo" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1562605879-79a9c6bc02c8" alt="Solo Trip Image" />
+      <h3>Uttarakhand</h3>
+      <p>Price: ₹9000</p>
+      <p>Duration: 4 days</p>
+      <p>Tags: hill station, adventure</p>
+      <a href="info.html?destination=Uttarakhand"><button class="filter-btn">Book Now</button></a>
+    </div>
+
+    <!-- Group Trips -->
+    <div class="trip-card group" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1563310222-cf25664b173b" alt="Group Trip Image" />
+      <h3>Dubai</h3>
+      <p>Price: ₹25000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: luxury, group</p>
+      <a href="info.html?destination=Dubai"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card group" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1583734572835-c1f68cb44051" alt="Group Trip Image" />
+      <h3>Kerala</h3>
+      <p>Price: ₹12000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: group, backwaters</p>
+      <a href="info.html?destination=Kerala"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card group" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1553241749-9db31a68fe63" alt="Group Trip Image" />
+      <h3>Andaman</h3>
+      <p>Price: ₹18000</p>
+      <p>Duration: 6 days</p>
+      <p>Tags: island, beach</p>
+      <a href="info.html?destination=Andaman"><button class="filter-btn">Book Now</button></a>
+    </div>
+
+    <!-- Student Trips -->
+    <div class="trip-card student" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1562285507-8792494b40f6" alt="Student Trip Image" />
+      <h3>Manali</h3>
+      <p>Price: ₹9000</p>
+      <p>Duration: 4 days</p>
+      <p>Tags: adventure, hill station</p>
+      <a href="info.html?destination=Manali"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card student" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1584210157961-e258d1103192" alt="Student Trip Image" />
+      <h3>Rishikesh</h3>
+      <p>Price: ₹8000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: eco, adventure</p>
+      <a href="info.html?destination=Rishikesh"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card student" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1556741533-b6a146eb8f4e" alt="Student Trip Image" />
+      <h3>Goa</h3>
+      <p>Price: ₹10000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: beach, nightlife</p>
+      <a href="info.html?destination=Goa"><button class="filter-btn">Book Now</button></a>
+    </div>
+
+    <!-- Adventurer Trips -->
+    <div class="trip-card adventure" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1580534106967-4b0b65d7a105" alt="Adventure Trip Image" />
+      <h3>Spiti Valley</h3>
+      <p>Price: ₹12000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: adventure, mountain</p>
+      <a href="info.html?destination=SpitiValley"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card adventure" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1580180712322-d9b7b0795b1d" alt="Adventure Trip Image" />
+      <h3>Leh Ladakh</h3>
+      <p>Price: ₹15000</p>
+      <p>Duration: 7 days</p>
+      <p>Tags: adventure, mountain</p>
+      <a href="info.html?destination=LehLadakh"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card adventure" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1581825131618-444b8b4ca9d2" alt="Adventure Trip Image" />
+      <h3>Uttarakhand</h3>
+      <p>Price: ₹10000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: trekking, adventure</p>
+      <a href="info.html?destination=Uttarakhand"><button class="filter-btn">Book Now</button></a>
+    </div>
+
+    <!-- Family Trips -->
+    <div class="trip-card family" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1580591184121-5a1401180c74" alt="Family Trip Image" />
+      <h3>Shimla</h3>
+      <p>Price: ₹8000</p>
+      <p>Duration: 4 days</p>
+      <p>Tags: family, hill station</p>
+      <a href="info.html?destination=Shimla"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card family" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1568305862-cf8ecf04d51c" alt="Family Trip Image" />
+      <h3>Darjeeling</h3>
+      <p>Price: ₹9000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: family, hill station</p>
+      <a href="info.html?destination=Darjeeling"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card family" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1505311014519-231902f37ae3" alt="Family Trip Image" />
+      <h3>Agra</h3>
+      <p>Price: ₹6000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: family, historical</p>
+      <a href="info.html?destination=Agra"><button class="filter-btn">Book Now</button></a>
+    </div>
+
+    <!-- Couple Trips -->
+    <div class="trip-card couple" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1593642634347-d6f516e3e5c7" alt="Couple Trip Image" />
+      <h3>Gulmarg</h3>
+      <p>Price: ₹4000</p>
+      <p>Duration: 4 days</p>
+      <p>Tags: couple, beach</p>
+      <a href="info.html?destination=Maldives"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card couple" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1559023666-cf01ed14497e" alt="Couple Trip Image" />
+      <h3>Oaty</h3>
+      <p>Price: ₹5000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: romance, luxury</p>
+      <a href="info.html?destination=Paris"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card couple" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1580552032074-287622a527b0" alt="Couple Trip Image" />
+      <h3>Munnar</h3>
+      <p>Price: ₹5000</p>
+      <p>Duration: 5 days</p>
+      <p>Tags: romantic, couple</p>
+      <a href="info.html?destination=Venice"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <!-- Budget Trips -->
+    <div class="trip-card budget">
+      <img src="https://images.unsplash.com/photo-1588745495089-9e524fba9fe2" alt="Budget Trip Image" />
+      <h3>Rishikesh</h3>
+      <p>Price: ₹8000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: eco, adventure</p>
+      <a href="info.html?destination=Rishikesh"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card budget">
+      <img src="https://images.unsplash.com/photo-1561572942-0c2b7d9a2d3b" alt="Budget Trip Image" />
+      <h3>Shimla</h3>
+      <p>Price: ₹7000</p>
+      <p>Duration: 3 days</p>
+      <p>Tags: family, hill station</p>
+      <a href="info.html?destination=Shimla"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card budget">
+      <img src="https://images.unsplash.com/photo-1604771912278-042cb0b3ffcb" alt="Budget Trip Image" />
+      <h3>Agra</h3>
+      <p>Price: ₹6000</p>
+      <p>Duration: 2 days</p>
+      <p>Tags: historical, family</p>
+      <a href="info.html?destination=Agra"><button class="filter-btn">Book Now</button></a>
+</div>
+    <!-- Luxury Trips -->
+    <div class="trip-card luxury" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1594741077053-0f8f87a61f62" alt="Luxury Trip Image" />
+      <h3>Banasura Sagar Dam</h3>
+      <p>Price: ₹20000</p>
+      <p>Duration: 7 days</p>
+      <p>Tags: luxury, water</p>
+      <a href="info.html?destination=Switzerland"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card luxury" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1560855938-cfe9b643ea9c" alt="Luxury Trip Image" />
+      <h3>Edakkal Caves</h3>
+      <p>Price: ₹20000</p>
+      <p>Duration: 4 days</p>
+      <p>Tags: luxury, shopping</p>
+      <a href="info.html?destination=Dubai"><button class="filter-btn">Book Now</button></a>
+    </div>
+    <div class="trip-card luxury" style="display:none;">
+      <img src="https://images.unsplash.com/photo-1560480003-3450a3600899" alt="Luxury Trip Image" />
+      <h3> Wayanad Heritage Museum</h3>
+      <p>Price: ₹15000</p>
+      <p>Duration: 6 days</p>
+      <p>Tags: luxury, museam</p>
+      <a href="info.html?destination=BoraBora"><button class="filter-btn">Book Now</button></a>
+    </div>
+  </section>
+  <script>
+    // Function to filter trips based on categories
+    const filterTrips = (category) => {
+      // Hide all trips
+      document.querySelectorAll('.trip-card').forEach(card => {
+        card.style.display = 'none';
+      });
+
+      // Show trips of the selected category
+      document.querySelectorAll(`.${category}`).forEach(card => {
+        card.style.display = 'block';
+      });
+    };
+
+    // Event listeners for category buttons
+    document.querySelectorAll('.category-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        filterTrips(button.getAttribute('data-category'));
+      });
+    });
+  </script>
+</body>
+</html>
+ <!-- Testimonials -->
+ <section class="testimonials">
+  <h2 style="text-align:center; margin-top: 2rem;">What Our Travelers Say</h2>
+  <div class="testimonial">
+    <p>“A great experience! The guide was perfect, and the homestay was comfortable and affordable. Would recommend!”</p>
+    <p><strong>- Nisha, Solo Traveler</strong></p>
+  </div>
+  <div class="testimonial">
+    <p>“TravelMate made my spiritual retreat in Varanasi effortless. Everything was taken care of!”</p>
+    <p><strong>- Akshar, Student</strong></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>TravelMate &copy; 2025 | Empowering local travel | Built by Group 4 TMU</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

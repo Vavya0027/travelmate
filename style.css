@@ -1,0 +1,174 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    color: #333;
+  }
+  
+  /* Header and Navigation */
+  header {
+    background: linear-gradient(90deg, #1e88e5, #42a5f5);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 25px;
+  }
+  
+  nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-image: url('https://source.unsplash.com/1600x900/?travel,beach,explore');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+  }
+  
+  .hero-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-text h2 {
+    font-size: 3em;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .hero-text p {
+    font-size: 1.3em;
+    font-weight: 300;
+  }
+  
+  /* Filters Section */
+  .filters {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f8fbff;
+  }
+  
+  .filters h2 {
+    font-size: 2.5em;
+    color: #1e88e5;
+    margin-bottom: 30px;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .filter-btn {
+    background: linear-gradient(to right, #ff6f00, #ffa726);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .filter-btn:hover {
+    background: linear-gradient(to right, #fb8c00, #ffb74d);
+    transform: scale(1.05);
+  }
+  
+  /* Trip Results Section */
+  .trips {
+    padding: 50px 20px;
+    background: #ffffff;
+    text-align: center;
+  }
+  
+  .trips p {
+    font-size: 1.4em;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    padding: 60px 20px;
+    background: linear-gradient(to right, #42a5f5, #64b5f6);
+    color: white;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+  }
+  
+  .testimonial {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .testimonial strong {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+    color: #ffd54f;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #1e88e5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+  }
+  

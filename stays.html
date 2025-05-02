@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TravelMate - Stays</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Sample Styling (you can move this to your style.css later) */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+
+    header nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: #00aaff;
+      color: white;
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .trip-results {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .trip-card {
+      background-color: white;
+      width: 30%;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .trip-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .trip-card h3 {
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .trip-card p {
+      color: #777;
+      font-size: 1em;
+    }
+
+    .trip-card button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .trip-card button:hover {
+      background-color: #0077cc;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>TravelMate</h1>
+    <p>Your smart, budget-friendly travel assistant</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stays.html">Stays</a>
+      <a href="guides.html">Local Guides</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h2>Accommodation Options</h2>
+    <p>Choose your perfect stay: Hostel, Homestay, Eco-lodge, or Resort</p>
+  </section>
+
+  <!-- Stay Listings -->
+  <section class="trip-results">
+    <!-- Budget Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?hostel,rishikesh" alt="Budget Hostel in Rishikesh" />
+      <h3>Budget Hostel in Rishikesh</h3>
+      <p><strong>Price:</strong> ₹1200 per night</p>
+      <p><strong>Facilities:</strong> Free Wi-Fi, Shared Room, 24/7 Reception</p>
+      <button>Book Now</button>
+    </div>
+    
+    <!-- Mid-range Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?homestay,banaras" alt="Cozy Homestay in Varanasi" />
+      <h3>Cozy Homestay in Varanasi</h3>
+      <p><strong>Price:</strong> ₹2500 per night</p>
+      <p><strong>Facilities:</strong> Breakfast, Private Room, Cultural Activities</p>
+      <button>Book Now</button>
+    </div>
+    
+    <!-- Luxury Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?eco-lodge,goa" alt="Eco-lodge in Goa" />
+      <h3>Eco-lodge in Goa</h3>
+      <p><strong>Price:</strong> ₹5500 per night</p>
+      <p><strong>Facilities:</strong> Pool, Eco-Friendly, Yoga Classes, Beach Access</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- Budget Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?hostel,manali" alt="Budget Hostel in Manali" />
+      <h3>Budget Hostel in Manali</h3>
+      <p><strong>Price:</strong> ₹1000 per night</p>
+      <p><strong>Facilities:</strong> Free Wi-Fi, Shared Room, Common Kitchen</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- Mid-range Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?homestay,mysore" alt="Homestay in Mysore" />
+      <h3>Homestay in Mysore</h3>
+      <p><strong>Price:</strong> ₹3000 per night</p>
+      <p><strong>Facilities:</strong> Home-cooked Meals, Private Room, Local Tours</p>
+      <button>Book Now</button>
+    </div>
+
+    <!-- Luxury Stay -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?resort,kerala" alt="Beachfront Resort in Kerala" />
+      <h3>Beachfront Resort in Kerala</h3>
+      <p><strong>Price:</strong> ₹7000 per night</p>
+      <p><strong>Facilities:</strong> Ocean View, Infinity Pool, Spa, Private Beach</p>
+      <button>Book Now</button>
+    </div>
+  </section>
+
+  
+
+</body>
+<!-- Footer -->
+  <!-- <footer>
+    <p>TravelMate &copy; 2025 | Empowering local travel | Built by Piyush</p>
+  </footer> -->
+</html>

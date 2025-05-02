@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking Information - TravelMate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2a2a72;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #2a2a72;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1c1c4f;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .back-link a {
+      color: #2a2a72;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Book Your Trip</h2>
+    <form action="#" method="post">
+      <label for="destination">Destination</label>
+      <input type="text" id="destination" name="destination" readonly />
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Contact Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="notes">Additional Notes (Optional)</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Any preferences or requests?"></textarea>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+    <div class="back-link">
+      <p><a href="index.html">&larr; Back to Home</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Fill destination from URL query
+    const urlParams = new URLSearchParams(window.location.search);
+    const destination = urlParams.get("destination");
+    if (destination) {
+      document.getElementById("destination").value = decodeURIComponent(destination);
+    }
+  </script>
+
+</body>
+</html>

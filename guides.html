@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TravelMate - Local Guides</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Sample Styling (you can move this to your style.css later) */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+
+    header nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: #00aaff;
+      color: white;
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .trip-results {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .trip-card {
+      background-color: white;
+      width: 30%;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .trip-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .trip-card h3 {
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .trip-card p {
+      color: #777;
+      font-size: 1em;
+    }
+
+    .trip-card button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .trip-card button:hover {
+      background-color: #0077cc;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>TravelMate</h1>
+    <p>Your smart, budget-friendly travel assistant</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="stays.html">Stays</a>
+      <a href="guides.html">Local Guides</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h2>Local Guides</h2>
+    <p>Discover verified local guides for your journey</p>
+  </section>
+
+  <!-- Guide Listings -->
+  <section class="trip-results">
+    <!-- Rishikesh Spiritual Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?yoga,spirituality" alt="Rishikesh Spiritual Guide" />
+      <h3>Rishikesh Spiritual Guide</h3>
+      <p><strong>Price:</strong> ₹2000 per day</p>
+      <p><strong>Expertise:</strong> Learn yoga, meditation, and spirituality with an experienced guide</p>
+      <button>Hire Guide</button>
+    </div>
+
+    <!-- Varanasi Cultural Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?varanasi,temple" alt="Varanasi Cultural Guide" />
+      <h3>Varanasi Cultural Guide</h3>
+      <p><strong>Price:</strong> ₹1500 per day</p>
+      <p><strong>Expertise:</strong> Explore the rich history, temples, and culture of Varanasi</p>
+      <button>Hire Guide</button>
+    </div>
+
+    <!-- Goa Adventure Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?goa,beach" alt="Goa Adventure Guide" />
+      <h3>Goa Adventure Guide</h3>
+      <p><strong>Price:</strong> ₹2500 per day</p>
+      <p><strong>Expertise:</strong> Discover hidden beaches, nature trails, and adventure sports in Goa</p>
+      <button>Hire Guide</button>
+    </div>
+
+    <!-- Jaipur Heritage Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?jaipur,fort" alt="Jaipur Heritage Guide" />
+      <h3>Jaipur Heritage Guide</h3>
+      <p><strong>Price:</strong> ₹1800 per day</p>
+      <p><strong>Expertise:</strong> Visit historical forts, palaces, and the royal culture of Jaipur</p>
+      <button>Hire Guide</button>
+    </div>
+
+    <!-- Kerala Backwaters Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?kerala,backwaters" alt="Kerala Backwaters Guide" />
+      <h3>Kerala Backwaters Guide</h3>
+      <p><strong>Price:</strong> ₹3000 per day</p>
+      <p><strong>Expertise:</strong> Experience the tranquility of Kerala's backwaters and local traditions</p>
+      <button>Hire Guide</button>
+    </div>
+
+    <!-- Delhi Heritage Guide -->
+    <div class="trip-card">
+      <img src="https://source.unsplash.com/400x300/?delhi,monument" alt="Delhi Heritage Guide" />
+      <h3>Delhi Heritage Guide</h3>
+      <p><strong>Price:</strong> ₹2200 per day</p>
+      <p><strong>Expertise:</strong> Discover Delhi's iconic landmarks, history, and culture</p>
+      <button>Hire Guide</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- <footer>
+    <p>TravelMate &copy; 2025 | Empowering local travel | Built by Piyush</p>
+  </footer> -->
+
+</body>
+</html>

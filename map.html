@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tourist Map of India</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Famous Tourist Places in India</h2>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([22.9734, 78.6569], 5); // Center India
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Add tourist location markers
+    const places = [
+      { name: "Taj Mahal, Agra", coords: [27.1751, 78.0421] },
+      { name: "Jaipur, Rajasthan", coords: [26.9124, 75.7873] },
+      { name: "Goa Beaches", coords: [15.2993, 74.1240] },
+      { name: "Varanasi, UP", coords: [25.3176, 82.9739] },
+      { name: "Kerala Backwaters", coords: [9.9312, 76.2673] },
+      { name: "Leh-Ladakh", coords: [34.1526, 77.5771] },
+      { name: "Darjeeling", coords: [27.0360, 88.2627] },
+      { name: "Delhi Red Fort", coords: [28.6562, 77.2410] }
+    ];
+
+    places.forEach(place => {
+      L.marker(place.coords).addTo(map)
+        .bindPopup(`<b>${place.name}</b>`);
+    });
+  </script>
+</body>
+</html>

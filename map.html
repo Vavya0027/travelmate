@@ -1,34 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tourist Map of India</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    header, footer {
+      background: linear-gradient(to right, #009ffd, #2a2a72);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .map-section {
+      padding: 2rem;
+      background: #e0f7fa;
+    }
+
+    .map-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .map-controls select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
     #map {
-      height: 90vh;
+      height: 75vh;
       width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <h2 style="text-align:center;">Famous Tourist Places in India</h2>
-  <div id="map"></div>
+
+  <header>
+    <h1>Welcome to Our Tourist Guide</h1>
+    <p>Explore the most famous tourist spots in India with this interactive map!</p>
+  </header>
+
+  <section class="map-section">
+    <h2 style="text-align:center; margin-bottom:1rem;">Famous Tourist Places in India</h2>
+
+    <!-- Select a Place -->
+    <div class="map-controls">
+      <select id="place-select">
+        <option value="" disabled selected>Select a place...</option>
+        <option value="0">Taj Mahal, Agra</option>
+        <option value="1">Jaipur, Rajasthan</option>
+        <option value="2">Goa Beaches</option>
+        <option value="3">Varanasi, UP</option>
+        <option value="4">Kerala Backwaters</option>
+        <option value="5">Leh-Ladakh</option>
+        <option value="6">Darjeeling</option>
+        <option value="7">Delhi Red Fort</option>
+      </select>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+  </section>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    var map = L.map('map').setView([22.9734, 78.6569], 5); // Center India
-
-    // Add OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-    }).addTo(map);
-
-    // Add tourist location markers
+    // Data for the eight famous places
     const places = [
       { name: "Taj Mahal, Agra", coords: [27.1751, 78.0421] },
       { name: "Jaipur, Rajasthan", coords: [26.9124, 75.7873] },
@@ -40,10 +93,32 @@
       { name: "Delhi Red Fort", coords: [28.6562, 77.2410] }
     ];
 
-    places.forEach(place => {
-      L.marker(place.coords).addTo(map)
+    // Initialize the map
+    const map = L.map('map').setView([22.9734, 78.6569], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Create markers and keep references
+    const markers = places.map(place => {
+      return L.marker(place.coords)
+        .addTo(map)
         .bindPopup(`<b>${place.name}</b>`);
     });
+
+    // Handle dropdown change
+    document.getElementById('place-select').addEventListener('change', function() {
+      const idx = parseInt(this.value, 10);
+      const { coords } = places[idx];
+      map.setView(coords, 10);            // Pan & zoom in
+      markers[idx].openPopup();           // Open the popup on that marker
+    });
   </script>
+
+  <footer>
+    <p>&copy; 2025 Tourist Guide. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
